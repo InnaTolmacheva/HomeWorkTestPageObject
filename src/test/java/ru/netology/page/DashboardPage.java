@@ -11,21 +11,26 @@ public class DashboardPage {
     private final String balanceFinish = " р.";
 
 
-    public int getFirstCardBalance(DataHelper.CardInfo cardInfo) {
+    /*public int getFirstCardBalance(DataHelper.CardInfo cardInfo) {
        var text = cards.first().text();
                 return extractBalance(text);
+    }*/
+
+    public int getFirstCardBalance() {
+        var text = cards.first().text();
+        return extractBalance(text);
     }
-    public int getSecondCardBalance(DataHelper.CardInfo cardInfo) {
+    public int getSecondCardBalance() {
         var text = cards.last().text();
         return extractBalance(text);
     }
 
-    public ReplenishmentCardPage selectFirstCard(DataHelper.CardInfo cardInfo) {
+    public ReplenishmentCardPage selectFirstCard() {
         cards.first().$("button").click();
         return new ReplenishmentCardPage();
     }
 
-    public ReplenishmentCardPage selectSecondCard(DataHelper.CardInfo cardInfo) {
+    public ReplenishmentCardPage selectSecondCard() {
         cards.last().$("button").click();
         return new ReplenishmentCardPage();
     }

@@ -30,13 +30,13 @@ public class MoneyTransferTest {
 
         int amount = 2000;
 
-        var expectedBalanceFirstCard = dashboardPage.getFirstCardBalance(firstNumber) - amount;
-        var expectedBalanceSecondCard = dashboardPage.getSecondCardBalance(secondNumber) + amount;
-        var replenishmentCardPage = dashboardPage.selectSecondCard(secondNumber);
+        var expectedBalanceFirstCard = dashboardPage.getFirstCardBalance() - amount;
+        var expectedBalanceSecondCard = dashboardPage.getSecondCardBalance() + amount;
+        var replenishmentCardPage = dashboardPage.selectSecondCard();
 
         dashboardPage = replenishmentCardPage.replenishmentCard(String.valueOf(amount), firstNumber);
-        var actualBalansFirstCard = dashboardPage.getFirstCardBalance(firstNumber);
-        var actualBalansSecondCard = dashboardPage.getSecondCardBalance(secondNumber);
+        var actualBalansFirstCard = dashboardPage.getFirstCardBalance();
+        var actualBalansSecondCard = dashboardPage.getSecondCardBalance();
         assertEquals(expectedBalanceFirstCard, actualBalansFirstCard);
         assertEquals(expectedBalanceSecondCard, actualBalansSecondCard);
 
@@ -57,13 +57,13 @@ public class MoneyTransferTest {
 
         int amount = 500;
 
-        var expectedBalanceFirstCard = dashboardPage.getFirstCardBalance(firstNumber) + amount;
-        var expectedBalanceSecondCard = dashboardPage.getSecondCardBalance(secondNumber) - amount;
-        var replenishmentCardPage = dashboardPage.selectFirstCard(firstNumber);
+        var expectedBalanceFirstCard = dashboardPage.getFirstCardBalance() + amount;
+        var expectedBalanceSecondCard = dashboardPage.getSecondCardBalance() - amount;
+        var replenishmentCardPage = dashboardPage.selectFirstCard();
 
         dashboardPage = replenishmentCardPage.replenishmentCard(String.valueOf(amount), secondNumber);
-        var actualBalansFirstCard = dashboardPage.getFirstCardBalance(firstNumber);
-        var actualBalansSecondCard = dashboardPage.getSecondCardBalance(secondNumber);
+        var actualBalansFirstCard = dashboardPage.getFirstCardBalance();
+        var actualBalansSecondCard = dashboardPage.getSecondCardBalance();
         assertEquals(expectedBalanceFirstCard, actualBalansFirstCard);
         assertEquals(expectedBalanceSecondCard, actualBalansSecondCard);
 
@@ -83,7 +83,7 @@ public class MoneyTransferTest {
 
         int amount = 1000;
 
-        var replenishmentCardPage = dashboardPage.selectSecondCard(secondNumber);
+        var replenishmentCardPage = dashboardPage.selectSecondCard();
 
         dashboardPage = replenishmentCardPage.replenishmentIncorrectCard(String.valueOf(amount), firstNumber);
 
