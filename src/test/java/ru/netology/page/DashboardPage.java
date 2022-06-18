@@ -3,6 +3,7 @@ package ru.netology.page;
 import com.codeborne.selenide.ElementsCollection;
 import ru.netology.data.DataHelper;
 import static com.codeborne.selenide.Selenide.$$;
+import static com.codeborne.selenide.Condition.text;
 
 public class DashboardPage {
     // к сожалению, разработчики не дали нам удобного селектора, поэтому так
@@ -11,17 +12,8 @@ public class DashboardPage {
     private final String balanceFinish = " р.";
 
 
-    /*public int getFirstCardBalance(DataHelper.CardInfo cardInfo) {
-       var text = cards.first().text();
-                return extractBalance(text);
-    }*/
-
-    public int getFirstCardBalance() {
-        var text = cards.first().text();
-        return extractBalance(text);
-    }
-    public int getSecondCardBalance() {
-        var text = cards.last().text();
+    public int getCardBalance(DataHelper.CardInfo cardInfo) {
+        var text = cards.findBy(text(cardInfo.getNumber().substring(12, 16))).text();
         return extractBalance(text);
     }
 
